@@ -1,73 +1,79 @@
-# React Custom Hook Assignment - `useFetch`
+# React Custom Hook Assignment
 
-A clean, modular React application demonstrating a custom hook (`useFetch`) for fetching API data, handling loading & error states, and rendering photo/product items in a responsive grid layout.
+## Project Overview
 
-## 📌 Problem Statement
-Create a reusable custom hook in React (`useFetch`) that simplifies fetching data from any backend API, handles loading and error states appropriately, and consumes it in a React component with clean styling.
+This project is my submission for the React Custom Hooks assignment. The goal was to create a reusable custom hook called `useFetch` that fetches data from an API and handles loading and error states. I used the JSONPlaceholder Photos API to display photos and their titles in a responsive grid.
+
+## What I Learned
+
+### Custom Hooks
+While working on this assignment, I learned how custom hooks help separate logic from UI components. Instead of writing the fetch logic inside `App.jsx`, I moved it into `useFetch`, which made the code easier to read and reuse.
+
+### useEffect
+One thing I learned was that `useEffect` itself cannot be asynchronous. Instead, I created an async function inside `useEffect` and called it to fetch the data.
+
+### Working with APIs
+I learned how to:
+- Fetch data using the Fetch API
+- Handle loading and error states
+- Display the fetched data using the `map()` function
+
+### Tailwind CSS
+I used Tailwind CSS to build the photo grid and make the layout responsive without writing much custom CSS.
 
 ---
 
-## 🛠️ Features & Requirements Checklist
+## Project Structure
 
-- [x] **Custom Hook Name**: `useFetch` located in `src/hooks/useFetch.js`
-- [x] **URL Parameter**: Accepts `url` endpoint dynamically
-- [x] **Return Values**:
-  - `data`: The fetched payload data
-  - `loading`: Boolean state indicating loading progress
-  - `error`: Error message string if the fetch encounters network or HTTP errors
-- [x] **React Hooks Utilized**: `useState`, `useEffect`, and `useCallback`
-- [x] **Error & Loading Handling**: Complete try-catch-finally block with status check (`response.ok`)
-- [x] **Component Integration**: Consumed in `App.jsx` and rendered via `PhotoCard.jsx`
-- [x] **Multi-API Flexible**: Works with JSONPlaceholder, Platzi Escuelajs (`https://api.escuelajs.co/api/v1/products`), etc.
-- [x] **Styling**: Tailwind CSS + custom SVG color placeholder palette with grid layout.
+- **src/hooks/useFetch.js** – Contains the custom `useFetch` hook.
+- **src/components/PhotoCard.jsx** – Displays each photo and its title.
+- **src/App.jsx** – Uses the custom hook and renders the photo gallery.
+- **src/index.css** – Global styles and Tailwind setup.
 
 ---
 
-## 📂 Project Structure
+## Challenges
+
+The JSONPlaceholder API returns 5000 photos. Rendering all of them at once affected the page performance, so I displayed only the first 48 photos using `slice(0, 48)`.
+
+I also had to make sure the loading state was updated correctly after the API request finished, whether it succeeded or failed.
+
+---
+
+## How to Run
+
+1. Clone the repository.
+
+```bash
+git clone https://github.com/dhiraj160/react-custom-hooks-assignment.git
+```
+
+2. Install the dependencies.
+
+```bash
+npm install
+```
+
+3. Start the development server.
+
+```bash
+npm run dev
+```
+
+4. Open the local URL shown in the terminal (usually `http://localhost:5173`).
+
+---
+
+## API Used
+
+JSONPlaceholder Photos API
 
 ```
-├── src/
-│   ├── components/
-│   │   └── PhotoCard.jsx       # Card component for individual items
-│   ├── hooks/
-│   │   └── useFetch.js         # Custom useFetch hook
-│   ├── App.jsx                 # Main consumer component
-│   ├── index.css               # Base Tailwind CSS rules
-│   └── main.jsx                # App root mounting
-├── index.html
-├── tailwind.config.js
-├── vite.config.js
-└── package.json
+https://jsonplaceholder.typicode.com/photos
 ```
 
 ---
 
-## 🚀 How to Run Locally
+## GitHub Repository
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-2. **Start development server**:
-   ```bash
-   npm run dev
-   ```
-
-3. **Build for production (Netlify deployment)**:
-   ```bash
-   npm run build
-   ```
-
----
-
-## 🌐 Netlify Deployment Guide
-
-1. Push this repository to GitHub.
-2. Log in to [Netlify](https://www.netlify.com/).
-3. Click **Add new site** > **Import an existing project** > Choose **GitHub**.
-4. Select your repository.
-5. Set Build Settings:
-   - **Build command**: `npm run build`
-   - **Publish directory**: `dist`
-6. Click **Deploy Site**.
+https://github.com/dhiraj160/react-custom-hooks-assignment
